@@ -15,7 +15,7 @@ class SearchBar extends Component {
 
   // set state will be undefined if you don't bind the this context!
   onInputChange(event) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     this.setState({term: event.target.value})
   }
 
@@ -23,6 +23,7 @@ class SearchBar extends Component {
     event.preventDefault();
 
     this.props.fetchWeather(this.state.term);
+    // component rerenders when state is set
     this.setState({ term: '' });
   }
 
@@ -47,4 +48,5 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchWeather }, dispatch);
 }
 
+// pass null bc we don't need any state here
 export default connect(null, mapDispatchToProps)(SearchBar);
